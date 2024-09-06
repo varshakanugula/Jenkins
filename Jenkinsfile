@@ -29,6 +29,21 @@ pipeline {
                 // Run integration tests using Maven's Failsafe plugin
                 //sh 'mvn verify'
             }
+            post 
+            {
+                success 
+                {
+                    emailext(to: "s223812374@deakin.edu.au",
+                    subject: "6.1C Pipeline Status",
+                    body: "Tests successful, see attached log for details",
+                    attachLog: true)
+                }
+                failure 
+                {
+                    emailext(to: "s223812374@deakin.edu.au",
+                    subject: "6.1C P")
+                } 
+            }  
         }
 
         stage('Code Analysis') {
@@ -41,7 +56,7 @@ pipeline {
                   //  sh 'mvn sonar:sonar'
                 }
             }
-        }
+        
 
         stage('Security Scan') {
             steps {
@@ -51,6 +66,21 @@ pipeline {
                 // Use OWASP Dependency-Check for security vulnerability scanning
                 //sh 'mvn org.owasp:dependency-check-maven:check'
             }
+             post 
+            {
+                success 
+                {
+                    emailext(to: "s223812374@deakin.edu.au",
+                    subject: "6.1C Pipeline Status",
+                    body: "Tests successful, see attached log for details",
+                    attachLog: true)
+                }
+                failure 
+                {
+                    emailext(to: "s223812374@deakin.edu.au",
+                    subject: "6.1C P")
+                } 
+            }  
         }
 
         stage('Deploy to Staging') {
@@ -91,14 +121,9 @@ pipeline {
                 //--credentials ${AWS_CREDENTIALS}
                 //"""
             }
+            
         }
+    } 
     
-
-    post {
-        always {
-            script {
-                echo 'Pipeline finished.'
-            }
-        }
-    }
 }
+    
