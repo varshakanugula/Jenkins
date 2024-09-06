@@ -4,7 +4,7 @@ pipeline {
     environment {
         STAGING_SERVER = 'staging-server-url'  // Replace with your staging server URL
         PRODUCTION_SERVER = 'production-server-url'  // Replace with your production server URL
-        AWS_CREDENTIALS = credentials('aws-credentials-id') // AWS credentials stored in Jenkins
+        AWS_CREDENTIALS = 'aws-credentials-id' // AWS credentials stored in Jenkins
         S3_BUCKET = 'your-s3-bucket'  // Replace with your S3 bucket name
     }
 
