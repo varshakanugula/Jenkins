@@ -41,7 +41,9 @@ pipeline {
                 failure 
                 {
                     emailext(to: "s223812374@deakin.edu.au",
-                    subject: "6.1C P")
+                    subject: "6.1C P",
+                    body: "Tests failure, see attached log for details",
+                    attachLog: true)
                 } 
             }  
         }
@@ -78,7 +80,9 @@ pipeline {
                 failure 
                 {
                     emailext(to: "s223812374@deakin.edu.au",
-                    subject: "6.1C P")
+                    subject: "6.1C P",
+                    body: "Tests failure, see attached log for details",
+                    attachLog: true)
                 } 
             }  
         }
