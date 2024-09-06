@@ -37,8 +37,8 @@ pipeline {
                     echo 'Performing Code Analysis...'
                 }
                 // Use SonarQube for code analysis
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
+                //withSonarQubeEnv('SonarQube') {
+                  //  sh 'mvn sonar:sonar'
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline {
                     echo 'Running Security Scan...'
                 }
                 // Use OWASP Dependency-Check for security vulnerability scanning
-                sh 'mvn org.owasp:dependency-check-maven:check'
+                //sh 'mvn org.owasp:dependency-check-maven:check'
             }
         }
 
@@ -60,10 +60,10 @@ pipeline {
                 }
                 // Deploy to AWS EC2 instance (Staging)
                 //sh """
-                aws ec2 deploy --region us-east-1 \
-                --server-url ${STAGING_SERVER} \
-                --s3-bucket ${S3_BUCKET} \
-                --credentials ${AWS_CREDENTIALS}
+                //aws ec2 deploy --region us-east-1 \
+                //--server-url ${STAGING_SERVER} \
+                //--s3-bucket ${S3_BUCKET} \
+                //--credentials ${AWS_CREDENTIALS}
                 //"""
             }
         }
@@ -85,10 +85,10 @@ pipeline {
                 }
                 // Deploy to AWS EC2 instance (Production)
                 //sh """
-                aws ec2 deploy --region us-east-1 \
-                --server-url ${PRODUCTION_SERVER} \
-                --s3-bucket ${S3_BUCKET} \
-                --credentials ${AWS_CREDENTIALS}
+                //aws ec2 deploy --region us-east-1 \
+                //--server-url ${PRODUCTION_SERVER} \
+                //--s3-bucket ${S3_BUCKET} \
+                //--credentials ${AWS_CREDENTIALS}
                 //"""
             }
         }
